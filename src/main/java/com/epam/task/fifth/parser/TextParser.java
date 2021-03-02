@@ -7,20 +7,21 @@ import java.util.stream.Stream;
 
 public class TextParser extends AbstractParser {
 
-    private final static String SPLITTER_OF_PARAGRAPHS = "\n";
+    private final static String PARAGRAPH_SPLITTER = "\n";
 
     @Override
     public Component parse(String inputText) {
-        String[] paragraphs = inputText.split(SPLITTER_OF_PARAGRAPHS);
+        String[] paragraphs = inputText.split(PARAGRAPH_SPLITTER);
         Composite text = new Composite();
         Stream stream = Arrays.stream(paragraphs);
         stream.forEach(paragraph -> {
-            ParagraphParser nextParser = new ParagraphParser();
-            setSuccessor(nextParser);
+            ParagraphParser paragraphParser = new ParagraphParser();
+            setSuccessor(paragraphParser);
             Component component = getSuccessor().parse((String) paragraph);
-            text.add(component);
+            text.addComponent(component);
         });
         return text;
     }
+
 
 }

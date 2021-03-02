@@ -7,18 +7,18 @@ import java.util.stream.Stream;
 
 public class ParagraphParser extends AbstractParser {
 
-    private final static String SPLITTER_OF_SENTENCES = ".";
+    private final static String SENTENCE_SPLITTER = "((\\.{3})|\\.|!|\\?)";
 
     @Override
     public Component parse(String inputParagraph) {
-        String[] sentences = inputParagraph.split(SPLITTER_OF_SENTENCES);
+        String[] sentences = inputParagraph.split(SENTENCE_SPLITTER);
         Composite paragraph = new Composite();
         Stream stream = Arrays.stream(sentences);
         stream.forEach(sentence -> {
-            SentenceParser nextParser = new SentenceParser();
-            setSuccessor(nextParser);
+            SentenceParser sentenceParser = new SentenceParser();
+            setSuccessor(sentenceParser);
             Component component = getSuccessor().parse((String) sentence);
-            paragraph.add(component);
+            paragraph.addComponent(component);
         });
         return paragraph;
     }

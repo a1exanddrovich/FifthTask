@@ -20,18 +20,16 @@ public class Composite implements Component{
     }
 
     @Override
-    public void add(Component component) {
+    public int getCount() {
+        return this.components.size();
+    }
+
+    public void addComponent(Component component) {
         components.add(component);
     }
 
-    @Override
-    public void remove(Component component) {
+    public void removeComponent(Component component) {
         components.remove(component);
-    }
-
-    @Override
-    public void operation(Component component) {
-        System.out.println("Operating something...");
     }
 
 }

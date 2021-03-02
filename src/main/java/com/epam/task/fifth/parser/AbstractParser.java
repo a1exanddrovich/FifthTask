@@ -12,9 +12,4 @@ public abstract class AbstractParser implements Parser {
         this.successor = successor;
     }
 
-//    public AbstractParser chain(AbstractParser successor) {
-//        this.successor = successor;
-//        return successor;
-//    }
-
 }

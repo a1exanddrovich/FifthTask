@@ -4,6 +4,6 @@ import com.epam.task.fifth.component.Component;
 
 public interface Parser {
 
-    Component parse(String inputText);
+    Component parse(String inputString);
 
 }
