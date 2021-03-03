@@ -5,12 +5,16 @@ import com.epam.task.fifth.component.Composite;
 import com.epam.task.fifth.component.Expression;
 
 import java.util.List;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 public class Calculator {
 
+    private final static Logger LOGGER = LogManager.getLogManager().getLogger("Calculator");
     private Interpreter interpreter = new Interpreter();
 
     public void calculateExpressions(Component text) {
+        LOGGER.info("Calculating expressions in the text has been started...");
         List<Component> paragraphs = ((Composite) text).getComponents();
         for (Component paragraph : paragraphs) {
             List<Component> sentences = ((Composite) paragraph).getComponents();
@@ -24,6 +28,7 @@ public class Calculator {
                 }
             }
         }
+        LOGGER.info("Calculating expressions in the text has been finished successfully");
     }
 
 }
