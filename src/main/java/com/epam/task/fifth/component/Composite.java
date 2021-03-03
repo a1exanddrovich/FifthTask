@@ -2,6 +2,7 @@ package com.epam.task.fifth.component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Composite implements Component{
 
@@ -32,4 +33,20 @@ public class Composite implements Component{
         components.remove(component);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Composite)){
+            return false;
+        }
+        Composite composite = (Composite) o;
+        return Objects.equals(getComponents(), composite.getComponents());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getComponents());
+    }
 }

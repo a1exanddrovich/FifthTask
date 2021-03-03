@@ -1,5 +1,7 @@
 package com.epam.task.fifth.component;
 
+import java.util.Objects;
+
 public class Expression implements Component {
 
     private String expression = new String();
@@ -21,4 +23,20 @@ public class Expression implements Component {
         return this.expression.length();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o){
+            return true;
+        }
+        if (!(o instanceof Expression)){
+            return false;
+        }
+        Expression that = (Expression) o;
+        return getExpression().equals(that.getExpression());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getExpression());
+    }
 }

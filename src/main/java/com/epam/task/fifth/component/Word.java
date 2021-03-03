@@ -1,5 +1,7 @@
 package com.epam.task.fifth.component;
 
+import java.util.Objects;
+
 public class Word implements Component {
 
     private String word = new String();
@@ -21,4 +23,20 @@ public class Word implements Component {
         return this.word.length();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o){
+            return true;
+        }
+        if (!(o instanceof Word)){
+            return false;
+        }
+        Word current = (Word) o;
+        return getWord().equals(current.getWord());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getWord());
+    }
 }
